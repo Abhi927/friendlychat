@@ -1,0 +1,23 @@
+{
+  "projects": {
+    "default": "friendlychat-a895c"
+  },
+  "targets": {
+    "friendlychat-9eb49": {
+      "hosting": {
+        "friendlychat": [
+          "friendlychat-9eb49"
+        ]
+      }
+    },
+    "friendlychat-a895c": {
+      "hosting": {
+        "friendlychat": [
+          "friendlychat-a895c"
+        ]
+      }
+    }
+  },
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
+}

@@ -1,0 +1,45 @@
+<nav>
+    <div><img  src="assets/dweep io 1.png" class="chat_app_logo" alt="chat app logo">
+        <p> Friendly Chat</p>
+    </div>
+    <div class="menu"><img src="{{user.profile}}" class="profile_image" alt="profile image">
+        <p>
+            {{user.name}}
+        </p><button (click)="toggleDiv()" class="more_button"><img src="assets/more.png" class="more_icon"
+        alt=""></button>
+    </div>
+</nav>
+<section>
+    <div *ngIf="isVisible" class="logout" >
+        <p>
+        {{user.name}}
+        </p>
+        <button (click)="this.chatService.logout()">logout</button>
+    </div>
+    <div class="chat_section">
+        <div *ngFor="let message of (messages$ | async)?.reverse() as messages;"  class="message_detail">
+
+            <div class="message_user_detail"><img [src]="message['profilePicUrl']" class="profile_image" alt="no">
+                <p>
+                    {{message['name']}}  
+                    :</p>
+            </div>
+            <div class="message">
+                <div *ngIf="message['text'] && message['text'].length > 0" >
+                    {{message['text']}} 
+                </div>
+                <div *ngIf="message['imageUrl'] && message['imageUrl'].length > 0" >
+                    <img  [src]="message['imageUrl']" alt="image"  alt="image" class="image">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="message_box">
+    <div>
+        <input type="file" class=" hidden" (change)="this.uploadImage($event)"  #fileUpload>
+        <button (click)="fileUpload.click()">+</button>
+        <input type="text" [(ngModel)]="text" placeholder="write your message">
+        <button  (click)="sendTextMessage()" >>></button>
+    </div>
+</div>
